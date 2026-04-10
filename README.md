@@ -1,6 +1,6 @@
-Análise de Fundos de Crédito Privado
+# Análise de Fundos de Crédito Privado
 
--- Objetivo
+## Objetivo
 Este projeto tem como objetivo analisar fundos de crédito privado com foco em debêntures, a partir da integração de diferentes bases de dados públicas, buscando avaliar:
 * Relação risco vs retorno
 * Estrutura e concentração da carteira
@@ -9,7 +9,7 @@ Este projeto tem como objetivo analisar fundos de crédito privado com foco em d
 
 O escopo foi intencionalmente recortado para priorizar profundidade analítica, clareza na interpretação dos dados e construção de uma narrativa orientada a tomada de decisão.
 
--- Bases de Dados Utilizadas
+## Bases de Dados Utilizadas
 Foram utilizadas as seguintes fontes:
 CVM (Composição e Diversificação da Carteira - CDA)
 → Estrutura detalhada dos ativos dos fundos
@@ -20,7 +20,7 @@ Base ANBIMA
 
 Além disso, foi desenvolvida uma rotina automatizada para download e extração dos dados diretamente das fontes oficiais.
 
--- Metodologia
+## Metodologia
 1. Seleção dos Fundos
 
 A análise foi construída a partir da escolha de quatro fundos, sendo:
@@ -73,28 +73,28 @@ Foi realizada uma análise ao longo do tempo para identificar mudanças de estra
 * Alterações no perfil de risco
 * Evolução da relação risco-retorno
 
--- Principais Insights
+## Principais Insights
 * Fundos com maior concentração apresentam maior risco estrutural, mas podem capturar maior retorno
 * A volatilidade da cota nem sempre reflete o risco real em crédito privado
 * A performance dos fundos analisados mostrou maior dependência de fatores de crédito do que de indexadores macroeconômicos
 * Estratégias dos fundos se alteram ao longo do tempo, impactando diretamente risco e retorno
 
--- Conclusão
+## Conclusão
 * O fundo Itaú apresentou o melhor equilíbrio entre risco e retorno no período analisado.
 * O fundo Icatu Vanguarda Dinâmico também se destacou, principalmente pelo crescimento do patrimônio e forte performance, podendo ser uma alternativa relevante dependendo do perfil do investidor.
 
--- Possíveis Evoluções
+## Possíveis Evoluções
 Como extensão da análise, poderiam ser incorporadas:
 * Métricas de risco não linear (Drawdown, Sortino Ratio)
 * Avaliação da qualidade de crédito (rating dos emissores)
 * Análise mais detalhada de spread e duration ao longo do tempo
 * Estudos de correlação entre fundos
 
--- Tecnologias Utilizadas
+## Tecnologias Utilizadas
 * Python
 * Pandas
 * Requests
 * Jupyter Notebook
 
--- Considerações Finais
+## Considerações Finais
 Este projeto foi desenvolvido com foco em demonstrar capacidade de estruturação de dados, construção de métricas e geração de insights relevantes para análise de investimentos em crédito privado.
