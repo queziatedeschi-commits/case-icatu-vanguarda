@@ -1,142 +1,100 @@
-# case-icatu-vanguarda
-Analisar fundos com exposição a debêntures.
-📊 Case Técnico
+Análise de Fundos de Crédito Privado
 
-Coleta, Tratamento e Analytics de Fundos de Crédito Privado
+-- Objetivo
+Este projeto tem como objetivo analisar fundos de crédito privado com foco em debêntures, a partir da integração de diferentes bases de dados públicas, buscando avaliar:
+* Relação risco vs retorno
+* Estrutura e concentração da carteira
+* Estratégia dos fundos ao longo do tempo
+* Comparação entre fundos com perfis distintos
 
- 
+O escopo foi intencionalmente recortado para priorizar profundidade analítica, clareza na interpretação dos dados e construção de uma narrativa orientada a tomada de decisão.
 
-🎯 Objetivo
+-- Bases de Dados Utilizadas
+Foram utilizadas as seguintes fontes:
+CVM (Composição e Diversificação da Carteira - CDA)
+→ Estrutura detalhada dos ativos dos fundos
+CVM (Informe Diário)
+→ Dados de cota, patrimônio líquido e evolução temporal
+Base ANBIMA
+→ Informações de mercado como spread e duration
 
-Desenvolver uma solução end-to-end para coleta, tratamento e análise de dados de fundos de investimento em crédito privado, com foco específico em debêntures.
+Além disso, foi desenvolvida uma rotina automatizada para download e extração dos dados diretamente das fontes oficiais.
 
-O candidato deverá construir uma aplicação (backend + frontend ou BI interativo, dependendo da abordagem escolhida) que permita:
+-- Metodologia
+1. Seleção dos Fundos
 
-Consolidar dados públicos de fundos
-Enriquecer as carteiras com informações de mercado
-Gerar análises e visualizações relevantes
-Comparar fundos sob diferentes perspectivas
-🧩 Escopo do Problema
+A análise foi construída a partir da escolha de quatro fundos, sendo:
+Dois fundos da Icatu com perfis distintos:
+* Perfil mais conservador
+* Perfil mais arriscado
+* Dois fundos concorrentes com características similares
 
-O projeto consiste em três grandes etapas:
+A classificação de risco foi baseada em métricas da carteira:
+* Concentração máxima por emissor (peso principal)
+* Número de emissores
+* Número de ativos
 
-1. Coleta de Dados
+Também foram aplicados filtros estruturais para garantir relevância da análise:
+* Mais de 2 emissores
+* Mais de 50 ativos
 
-Realizar a ingestão das seguintes informações públicas:
+2. Análise de Performance
 
-Fundos de Investimento (CVM)
+A performance foi avaliada com base nos dados do Informe Diário, considerando:
+* Retorno
+* Volatilidade
+* Evolução da cota (normalizada na base 100)
+* Crescimento do patrimônio líquido
 
-Informe Diário
-Cota
-Patrimônio Líquido (PL)
-Composição e Diversificação da Carteira
-Posições em ativos (filtrar apenas debêntures)
-Espera-se que o candidato implemente algum mecanismo de coleta automatizada (ex: scraping, download estruturado ou consumo de APIs públicas).
+Essa etapa permite avaliar não apenas o retorno, mas a qualidade da gestão sob a ótica risco-retorno.
 
- 
+3. Análise da Carteira
 
- 
+A estrutura da carteira foi analisada sob diferentes perspectivas:
+* Concentração por emissor (Top 5)
+* Diversificação da carteira
+* Distribuição por setor
+* Exposição por indexador
 
-2. Enriquecimento e Tratamento de Dados
+Os resultados indicam que a performance dos fundos está mais relacionada às características de crédito dos ativos (spread, risco do emissor e estrutura) do que à simples variação de indexadores como CDI ou inflação.
 
-Os dados coletados deverão ser tratados e integrados com as seguintes bases auxiliares:
+4. Métricas de Crédito
 
-📁 Base 1: Cadastro de Debêntures
+Para aprofundar a análise, foram consideradas métricas específicas de crédito:
+* Spread médio
+* Duration (exposição a prazo)
 
-Contém informações estruturais dos ativos:
+Essas métricas permitem entender o nível de risco assumido e a sensibilidade da carteira a fatores de mercado.
 
-Código CETIP / Identificador
-Emissor
-Data de emissão
-Indexador (CDI, IPCA, etc.)
-Taxa de remuneração
-Outras características relevantes
-📁 Base 2: Taxas Indicativas (Anbima)
+5. Análise Temporal
 
-Contém histórico de mercado:
+Foi realizada uma análise ao longo do tempo para identificar mudanças de estratégia dos fundos, permitindo avaliar:
+* Consistência da gestão
+* Alterações no perfil de risco
+* Evolução da relação risco-retorno
 
-Spreads
-Taxas indicativas
-Duration
-📁 Base 3 (a ser construída ou sugerida pelo candidato)
+-- Principais Insights
+* Fundos com maior concentração apresentam maior risco estrutural, mas podem capturar maior retorno
+* A volatilidade da cota nem sempre reflete o risco real em crédito privado
+* A performance dos fundos analisados mostrou maior dependência de fatores de crédito do que de indexadores macroeconômicos
+* Estratégias dos fundos se alteram ao longo do tempo, impactando diretamente risco e retorno
 
-Classificação setorial dos emissores
-Pode ser manual, baseada em regras ou enriquecida via fontes externas
-3. Construção da Camada Analítica
+-- Conclusão
+* O fundo Itaú apresentou o melhor equilíbrio entre risco e retorno no período analisado.
+* O fundo Icatu Vanguarda Dinâmico também se destacou, principalmente pelo crescimento do patrimônio e forte performance, podendo ser uma alternativa relevante dependendo do perfil do investidor.
 
-A partir dos dados tratados, o candidato deverá estruturar análises que permitam avaliar fundos de crédito.
+-- Possíveis Evoluções
+Como extensão da análise, poderiam ser incorporadas:
+* Métricas de risco não linear (Drawdown, Sortino Ratio)
+* Avaliação da qualidade de crédito (rating dos emissores)
+* Análise mais detalhada de spread e duration ao longo do tempo
+* Estudos de correlação entre fundos
 
-📈 Funcionalidades Esperadas
+-- Tecnologias Utilizadas
+* Python
+* Pandas
+* Requests
+* Jupyter Notebook
 
-A solução deve permitir, no mínimo:
-
-🔎 Análise Individual de Fundos
-
-Para um fundo específico, apresentar:
-
-Rentabilidade histórica (baseada na cota)
-Evolução do Patrimônio Líquido (PL)
-Composição da carteira (somente debêntures)
-Quebras analíticas:
-Por emissor
-Por setor
-Por indexador
-Por nível de spread e/ou duration
-🔄 Análise Temporal
-
-Evolução da carteira ao longo do tempo
-Movimentações relevantes:
-Entrada/saída de ativos
-Evolução de spreads dos ativos em carteira
-Análise de abertura/fechamento de spread (mark-to-market implícito)
-⚖️ Comparação entre Fundos
-
-Permitir comparação entre dois ou mais fundos:
-
-Rentabilidade
-Diferenças na composição de carteira
-Exposição por setor/emissor
-Perfil de risco (ex: duration, spread médio)
-💡 Geração de Insights
-
-O candidato é incentivado a explorar os dados além do básico, por exemplo:
-
-Identificação de concentração excessiva por emissor/setor
-Relação entre spread e performance
-Mudanças relevantes na estratégia do fundo
-Análises que julgar pertinentes
-🏗️ Requisitos Técnicos (Flexíveis, mas Avaliados)
-
-O candidato tem liberdade de escolha tecnológica, porém será avaliado em:
-
-Organização do código (modularização, clareza, separação de responsabilidades)
-Estrutura de dados (modelagem, eficiência)
-Pipeline de dados (ETL/ELT)
-Qualidade das análises geradas
-Clareza das visualizações
-Diferenciais
-
-Uso de APIs próprias
-Interface interativa (ex: Streamlit, Dash, React, etc.)
-Deploy (local ou cloud)
-Documentação estruturada
-📦 Entregáveis
-
-O candidato deverá fornecer:
-
-Código-fonte do projeto
-Instruções de execução
-Descrição da arquitetura e decisões técnicas
-Demonstração das análises (prints, vídeo ou aplicação rodando)
-🧠 O que será avaliado
-
-Capacidade de estruturar um pipeline de dados
-Qualidade da modelagem e integração das bases
-Clareza na construção das análises
-Capacidade de extrair insights relevantes
-Organização e maturidade de engenharia
-📌 Observações
-
-Não é necessário cobrir 100% do escopo — priorização faz parte da avaliação
-Assuma que os dados podem ter inconsistências
-Justifique decisões técnicas sempre que possível
+-- Considerações Finais
+Este projeto foi desenvolvido com foco em demonstrar capacidade de estruturação de dados, construção de métricas e geração de insights relevantes para análise de investimentos em crédito privado.
